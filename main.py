@@ -20,6 +20,7 @@ itembtn2 = types.KeyboardButton('Что может этот бот ?')
 keyboard = types.ReplyKeyboardMarkup(True,False)
 keyboard.row(itembtn1,itembtn2)
 
+asdasdassd
 
 @dp.message_handler(commands=['start'])
 async def start_cmd(message: types.Message):
