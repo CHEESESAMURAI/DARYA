@@ -11,7 +11,7 @@ STICKER_ID6 = 'CAACAgIAAxkBAAEETM9iQZFlJCK3KhqsCuMBNHYe1WQOIgACtgIAAjZ2IA7n32q5Z
 STICKER_ID7 = 'CAACAgIAAxkBAAEETNNiQZI8UDS4NsXRWlgy7KCrRxtgfQACvgIAAjZ2IA7h0bEDcPJpciME' #start
 STICKER_ID8 = 'CAACAgIAAxkBAAEETNdiQZRtSQL9LXT59OQ7VdOMKhqcxgACvwIAAjZ2IA6DDqb7e0kSxSME' #rech
 
-bot = Bot(token='5111371389:AAFpt0ee561fgKT5rwZ52ZytL4gdad5F9h4')
+bot = Bot(token='')
 dp = Dispatcher(bot)
 
 itembtn1 = types.KeyboardButton('Запустить анализатор')
