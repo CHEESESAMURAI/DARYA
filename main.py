@@ -11,7 +11,7 @@ STICKER_ID6 = 'CAACAgIAAxkBAAEETM9iQZFlJCK3KhqsCuMBNHYe1WQOIgACtgIAAjZ2IA7n32q5Z
 STICKER_ID7 = 'CAACAgIAAxkBAAEETNNiQZI8UDS4NsXRWlgy7KCrRxtgfQACvgIAAjZ2IA7h0bEDcPJpciME' #start
 STICKER_ID8 = 'CAACAgIAAxkBAAEETNdiQZRtSQL9LXT59OQ7VdOMKhqcxgACvwIAAjZ2IA6DDqb7e0kSxSME' #rech
 
-bot = Bot(token='5111371389:AAFpt0ee561fgKT5rwZ52ZytL4gdad5F9h4')
+bot = Bot(token='5132803445:AAHnqE872bqje9aRs2JY_8FjrbNLe7q04CI')
 dp = Dispatcher(bot)
 
 itembtn1 = types.KeyboardButton('Запустить анализатор')
@@ -20,7 +20,6 @@ itembtn2 = types.KeyboardButton('Что может этот бот ?')
 keyboard = types.ReplyKeyboardMarkup(True,False)
 keyboard.row(itembtn1,itembtn2)
 
-asdasdassd
 
 @dp.message_handler(commands=['start'])
 async def start_cmd(message: types.Message):
@@ -86,12 +85,19 @@ async def all_other_messages(message: types.Message):
             par-=1
             opr.remove('speech')
 
+        # def toFixed(f: float, n=0):
+        #     a, b = str(f).split('.')
+        #     return '{}.{}{}'.format(a, b[:n], '0' * (n - len(b)))
+        #
+        def toFixed(f: float, n=0):
+            a, b = str(f).split('.')
+            return '{}.{}{}'.format(a, b[:n], '0' * (n - len(b)))
 
-        print(sentiment['skip'])
-        print(sentiment['neutral'])
-        print(sentiment['positive'])
-        print(sentiment['negative'])
-        print(sentiment['speech'])
+        print(toFixed(float(sentiment['skip']),2))
+        print(toFixed(float(sentiment['neutral']),2))
+        print(toFixed(float(sentiment['positive']),2))
+        print(toFixed(float(sentiment['negative']),2))
+        print(toFixed(float(sentiment['speech']),2))
         print(par)
         print(opr)
 
@@ -99,24 +105,24 @@ async def all_other_messages(message: types.Message):
             if par == 2 or par == 1 or par == 3:
                 await bot.send_sticker(message.chat.id, STICKER_ID1)
                 await bot.send_message(message.chat.id, 'Ваше сообщение содержит несколько парамметров:')
-                await bot.send_message(message.chat.id, 'Ваше сообщение больше ПОЗИТИВНОЕ , но и содержит ')
+                await bot.send_message(message.chat.id, 'Ваше сообщение больше ПОЗИТИВНОЕ '+toFixed(float(sentiment['positive']),2)+' %, но и содержит ')
                 if 'negative' in opr:
-                    await bot.send_message(message.chat.id, 'негатив')
+                    await bot.send_message(message.chat.id, 'негатив '+toFixed(float(sentiment['negative']),2)+' %')
                     await bot.send_message(message.chat.id,
                                            'Что бы продолжить работу анализтора , просто напишите еще текст и бот оценит его')
                     break
                 elif 'neutral' in opr:
-                    await bot.send_message(message.chat.id, 'нейтральность')
+                    await bot.send_message(message.chat.id, 'нейтральность '+toFixed(float(sentiment['neutral']),2)+' %')
                     await bot.send_message(message.chat.id,
                                            'Что бы продолжить работу анализтора , просто напишите еще текст и бот оценит его')
                     break
                 elif 'skip' in opr:
-                    await bot.send_message(message.chat.id, 'непонятность')
+                    await bot.send_message(message.chat.id, 'непонятность '+toFixed(float(sentiment['skip']),2)+' %')
                     await bot.send_message(message.chat.id,
                                            'Что бы продолжить работу анализтора , просто напишите еще текст и бот оценит его')
                     break
                 elif 'speech' in opr:
-                    await bot.send_message(message.chat.id, 'речь')
+                    await bot.send_message(message.chat.id, 'речь '+toFixed(float(sentiment['speech']),2)+' %')
                     await bot.send_message(message.chat.id,
                                            'Что бы продолжить работу анализтора , просто напишите еще текст и бот оценит его')
                     break
@@ -130,22 +136,22 @@ async def all_other_messages(message: types.Message):
             if par == 2 or par == 1 or par == 3:
                 await bot.send_sticker(message.chat.id, STICKER_ID3)
                 await bot.send_message(message.chat.id, 'Ваше сообщение содержит несколько парамметров:')
-                await bot.send_message(message.chat.id, 'Ваше сообщение больше НЕГАТИВНОЕ , но и содержит ')
+                await bot.send_message(message.chat.id, 'Ваше сообщение больше НЕГАТИВНОЕ не '+toFixed(float(sentiment['negative']),2)+' %, но и содержит ')
                 if 'positive' in opr:
-                    await bot.send_message(message.chat.id, 'позитива')
+                    await bot.send_message(message.chat.id, 'позитива '+toFixed(float(sentiment['positive']),2)+' %')
                     await bot.send_message(message.chat.id,'Что бы продолжить работу анализтора , просто напишите еще текст и бот оценит его')
                     break
                 elif 'neutral' in opr:
-                    await bot.send_message(message.chat.id, 'нейтральность')
+                    await bot.send_message(message.chat.id, 'нейтральность '+toFixed(float(sentiment['neutral']),2)+' %')
                     await bot.send_message(message.chat.id,'Что бы продолжить работу анализтора , просто напишите еще текст и бот оценит его')
                     break
                 elif 'skip' in opr:
-                    await bot.send_message(message.chat.id, 'непонятность')
+                    await bot.send_message(message.chat.id, 'непонятность '+toFixed(float(sentiment['skip']),2)+' %')
                     await bot.send_message(message.chat.id,
                                            'Что бы продолжить работу анализтора , просто напишите еще текст и бот оценит его')
                     break
                 elif 'speech' in opr:
-                    await bot.send_message(message.chat.id, 'речь')
+                    await bot.send_message(message.chat.id, 'речь '+toFixed(float(sentiment['speech']),2)+' %')
                     await bot.send_message(message.chat.id,
                                            'Что бы продолжить работу анализтора , просто напишите еще текст и бот оценит его')
                     break
@@ -159,24 +165,24 @@ async def all_other_messages(message: types.Message):
             if par == 2 or par == 1 or par == 3:
                 await bot.send_sticker(message.chat.id,STICKER_ID4)
                 await bot.send_message(message.chat.id, 'Ваше сообщение содержит несколько парамметров:')
-                await bot.send_message(message.chat.id, 'Ваше сообщение больше НЕЙТРАЛЬНОЕ , но и содержит ')
+                await bot.send_message(message.chat.id, 'Ваше сообщение больше НЕЙТРАЛЬНОЕ на '+toFixed(float(sentiment['neutral']),2)+' %, но и содержит ')
                 if 'negative' in opr:
-                    await bot.send_message(message.chat.id, 'негатив')
+                    await bot.send_message(message.chat.id, 'негатив '+toFixed(float(sentiment['negative']),2)+' %')
                     await bot.send_message(message.chat.id,
                                            'Что бы продолжить работу анализтора , просто напишите еще текст и бот оценит его')
                     break
                 elif 'positive' in opr:
-                    await bot.send_message(message.chat.id, 'позитива')
+                    await bot.send_message(message.chat.id, 'позитива '+toFixed(float(sentiment['positive']),2)+' %')
                     await bot.send_message(message.chat.id,
                                            'Что бы продолжить работу анализтора , просто напишите еще текст и бот оценит его')
                     break
                 elif 'skip' in opr:
-                    await bot.send_message(message.chat.id, 'непонятность')
+                    await bot.send_message(message.chat.id, 'непонятность '+toFixed(float(sentiment['skip']),2)+' %')
                     await bot.send_message(message.chat.id,
                                            'Что бы продолжить работу анализтора , просто напишите еще текст и бот оценит его')
                     break
                 elif 'speech' in opr:
-                    await bot.send_message(message.chat.id, 'речь')
+                    await bot.send_message(message.chat.id, 'речь '+toFixed(float(sentiment['speech']),2)+' %')
                     await bot.send_message(message.chat.id,
                                            'Что бы продолжить работу анализтора , просто напишите еще текст и бот оценит его')
                     break
@@ -189,24 +195,24 @@ async def all_other_messages(message: types.Message):
             if par == 2 or par == 1 or par == 3:
                 await bot.send_sticker(message.chat.id, STICKER_ID5)
                 await bot.send_message(message.chat.id, 'Ваше сообщение содержит несколько парамметров:')
-                await bot.send_message(message.chat.id, 'Ваше сообщение больше НЕПОНЯТНОЕ , но и содержит ')
+                await bot.send_message(message.chat.id, 'Ваше сообщение больше НЕПОНЯТНОЕ на '+toFixed(float(sentiment['skip']),2)+' % , но и содержит ')
                 if 'negative' in opr:
-                    await bot.send_message(message.chat.id, 'негатив')
+                    await bot.send_message(message.chat.id, 'негатив '+toFixed(float(sentiment['negative']),2)+' %')
                     await bot.send_message(message.chat.id,
                                            'Что бы продолжить работу анализтора , просто напишите еще текст и бот оценит его')
                     break
                 elif 'neutral' in opr:
-                    await bot.send_message(message.chat.id, 'нейтральность')
+                    await bot.send_message(message.chat.id, 'нейтральность '+toFixed(float(sentiment['neutral']),2)+' %')
                     await bot.send_message(message.chat.id,
                                            'Что бы продолжить работу анализтора , просто напишите еще текст и бот оценит его')
                     break
                 elif 'positive' in opr:
-                    await bot.send_message(message.chat.id, 'позитива')
+                    await bot.send_message(message.chat.id, 'позитива '+toFixed(float(sentiment['positive']),2)+' %')
                     await bot.send_message(message.chat.id,
                                            'Что бы продолжить работу анализтора , просто напишите еще текст и бот оценит его')
                     break
                 elif 'speech' in opr:
-                    await bot.send_message(message.chat.id, 'речь')
+                    await bot.send_message(message.chat.id, 'речь '+toFixed(float(sentiment['speech']),2)+' %')
                     await bot.send_message(message.chat.id,
                                            'Что бы продолжить работу анализтора , просто напишите еще текст и бот оценит его')
                     break
@@ -219,24 +225,24 @@ async def all_other_messages(message: types.Message):
             if par == 2 or par == 1 or par == 3:
                 await bot.send_sticker(message.chat.id,STICKER_ID8)
                 await bot.send_message(message.chat.id, 'Ваше сообщение содержит несколько парамметров:')
-                await bot.send_message(message.chat.id, 'Ваше сообщение больше РЕЧЕВОЕ , но и содержит ')
+                await bot.send_message(message.chat.id, 'Ваше сообщение больше РЕЧЕВОЕ на '+toFixed(float(sentiment['speech']),2)+' %, но и содержит ')
                 if 'negative' in opr:
-                    await bot.send_message(message.chat.id, 'негатив')
+                    await bot.send_message(message.chat.id, 'негатив'+toFixed(float(sentiment['negative']),2)+'%')
                     await bot.send_message(message.chat.id,
                                            'Что бы продолжить работу анализтора , просто напишите еще текст и бот оценит его')
                     break
                 elif 'neutral' in opr:
-                    await bot.send_message(message.chat.id, 'нейтральность')
+                    await bot.send_message(message.chat.id, 'нейтральность '+toFixed(float(sentiment['neutral']),2)+' %')
                     await bot.send_message(message.chat.id,
                                            'Что бы продолжить работу анализтора , просто напишите еще текст и бот оценит его')
                     break
                 elif 'positive' in opr:
-                    await bot.send_message(message.chat.id, 'позитива')
+                    await bot.send_message(message.chat.id, 'позитива'+toFixed(float(sentiment['positive']),2)+' %')
                     await bot.send_message(message.chat.id,
                                            'Что бы продолжить работу анализтора , просто напишите еще текст и бот оценит его')
                     break
                 elif 'speech' in opr:
-                    await bot.send_message(message.chat.id, 'непонятность')
+                    await bot.send_message(message.chat.id, 'непонятность '+toFixed(float(sentiment['speech']),2)+' %')
                     await bot.send_message(message.chat.id,
                                            'Что бы продолжить работу анализтора , просто напишите еще текст и бот оценит его')
                     break
