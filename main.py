@@ -2,6 +2,9 @@ from aiogram import Bot, Dispatcher, executor, types
 from dostoevsky.tokenization import RegexTokenizer
 from dostoevsky.models import FastTextSocialNetworkModel
 
+
+;
+
 STICKER_ID1 = 'CAACAgIAAxkBAAEETMtiQZDXr7ucg_Y2XzkyPqrT5m-ucgACqwIAAjZ2IA4vRxK7XlfP0yME' #POS
 STICKER_ID2 = 'CAACAgIAAxkBAAEETM1iQZEVYPCV623EnrHJwsAgUnBXcwACuQIAAjZ2IA7tdOsFZ9JbhSME' #HI
 STICKER_ID3 = 'CAACAgIAAxkBAAEETMdiQZC6AAGNKTdYX3iihcx0JaNM1lAAArUCAAI2diAOBDcfp-Faa4gjBA' #ANGRY
