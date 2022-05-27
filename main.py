@@ -3,8 +3,6 @@ from dostoevsky.tokenization import RegexTokenizer
 from dostoevsky.models import FastTextSocialNetworkModel
 
 
-;
-
 STICKER_ID1 = 'CAACAgIAAxkBAAEETMtiQZDXr7ucg_Y2XzkyPqrT5m-ucgACqwIAAjZ2IA4vRxK7XlfP0yME' #POS
 STICKER_ID2 = 'CAACAgIAAxkBAAEETM1iQZEVYPCV623EnrHJwsAgUnBXcwACuQIAAjZ2IA7tdOsFZ9JbhSME' #HI
 STICKER_ID3 = 'CAACAgIAAxkBAAEETMdiQZC6AAGNKTdYX3iihcx0JaNM1lAAArUCAAI2diAOBDcfp-Faa4gjBA' #ANGRY
@@ -14,7 +12,7 @@ STICKER_ID6 = 'CAACAgIAAxkBAAEETM9iQZFlJCK3KhqsCuMBNHYe1WQOIgACtgIAAjZ2IA7n32q5Z
 STICKER_ID7 = 'CAACAgIAAxkBAAEETNNiQZI8UDS4NsXRWlgy7KCrRxtgfQACvgIAAjZ2IA7h0bEDcPJpciME' #start
 STICKER_ID8 = 'CAACAgIAAxkBAAEETNdiQZRtSQL9LXT59OQ7VdOMKhqcxgACvwIAAjZ2IA6DDqb7e0kSxSME' #rech
 
-bot = Bot(token='5132803445:AAHnqE872bqje9aRs2JY_8FjrbNLe7q04CI')
+bot = Bot(token='')
 dp = Dispatcher(bot)
 
 itembtn1 = types.KeyboardButton('Запустить анализатор')
